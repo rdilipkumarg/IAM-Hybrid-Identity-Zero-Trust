@@ -1,0 +1,60 @@
+flowchart TB
+
+subgraph User_Layer["User Layer"]
+U1[Standard Employee]
+U2[IT Administrator]
+U3[Privileged Administrator]
+end
+
+subgraph Endpoint_Layer["Endpoint Devices"]
+D1[Corporate Laptop]
+D2[Privileged Access Workstation PAW]
+D3[Mobile Device]
+end
+
+subgraph OnPrem_Environment["On-Premise Datacenter"]
+AD[Active Directory Domain Services]
+DC[Domain Controllers]
+AADConnect[Azure AD Connect Sync Server]
+PAM[Privileged Access Management Vault]
+end
+
+subgraph Identity_Provider["Cloud Identity Provider"]
+AAD[Azure Entra ID / Azure AD]
+MFA[Multi-Factor Authentication]
+CA[Conditional Access Policies]
+PIM[Privileged Identity Management]
+end
+
+subgraph Protected_Resources["Protected Resources"]
+O365[Microsoft 365]
+AZURE[Azure Subscriptions]
+SaaS[Enterprise SaaS Applications]
+Servers[On-Prem Servers]
+end
+
+U1 --> D1
+U2 --> D1
+U3 --> D2
+
+D1 --> AD
+D2 --> AD
+D3 --> AAD
+
+AD --> DC
+AD --> AADConnect
+
+AADConnect --> AAD
+
+AAD --> MFA
+AAD --> CA
+AAD --> PIM
+
+AAD --> O365
+AAD --> AZURE
+AAD --> SaaS
+
+AD --> Servers
+
+PIM --> AZURE
+PIM --> O365
