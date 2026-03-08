@@ -1,0 +1,48 @@
+flowchart LR
+
+subgraph Corporate_Network["Corporate Network"]
+DC1[Domain Controller 1]
+DC2[Domain Controller 2]
+AD[Active Directory]
+AADSync[Azure AD Connect Server]
+PAMVault[PAM Vault]
+JumpServer[Privileged Jump Server]
+end
+
+subgraph Secure_Admin_Zone["Tier 0 Admin Zone"]
+PAW[Privileged Access Workstation]
+AdminUser[Privileged Admin]
+end
+
+subgraph Azure_Cloud["Azure Cloud Identity"]
+EntraID[Azure Entra ID]
+MFA[Azure MFA Service]
+CA[Conditional Access Engine]
+PIM[Privileged Identity Management]
+end
+
+subgraph Enterprise_Resources["Enterprise Applications"]
+M365[Microsoft 365]
+AzurePortal[Azure Portal]
+SaaSApps[SaaS Apps]
+VMs[Azure Virtual Machines]
+end
+
+AdminUser --> PAW
+PAW --> JumpServer
+JumpServer --> AD
+
+AD --> DC1
+AD --> DC2
+
+AD --> AADSync
+AADSync --> EntraID
+
+EntraID --> MFA
+EntraID --> CA
+EntraID --> PIM
+
+EntraID --> M365
+EntraID --> AzurePortal
+EntraID --> SaaSApps
+PIM --> VMs
