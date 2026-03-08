@@ -54,9 +54,7 @@ These organizations typically operate with legacy infrastructure while gradually
 ## Architecture
 The architecture centers around Azure Active Directory as the central Identity Provider integrated with on-premises Active Directory using directory synchronization.
 
-Architecture Diagram
-
-
+Hybrid Identity Architecture Diagram.png
 
 Key Components
 
@@ -76,11 +74,8 @@ Enterprise Applications
 ## System Design
 The system design defines how authentication requests flow between users, applications, and identity providers in a hybrid environment.
 
-System Design Diagram
+Hybrid Identity System Design Diagram.png
 
-(Insert your System Design Diagram here)
-
-[ System Design Diagram Placeholder ]
 Authentication Flow
 
 User attempts to access an enterprise application.
@@ -99,11 +94,8 @@ This system design ensures centralized identity verification while supporting hy
 ## Implementation
 This section describes the technical implementation of the hybrid identity architecture.
 
-Implementation Diagram
+Hybrid Identity Implementation Diagram.png
 
-(Insert your Implementation Diagram here)
-
-[ Implementation Diagram Placeholder ]
 Key Implementation Components
 
 Active Directory Domain Environment
