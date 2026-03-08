@@ -1,0 +1,37 @@
+sequenceDiagram
+
+participant User
+participant Device
+participant AD as On-Prem AD
+participant AADConnect
+participant Entra as Azure Entra ID
+participant MFA
+participant CA as Conditional Access
+participant PIM
+participant Resource as Cloud Resource
+
+Note over AD,AADConnect: Identity Synchronization
+AD->>AADConnect: Sync users, groups, password hash
+AADConnect->>Entra: Update cloud identity directory
+
+Note over User,Resource: Authentication Flow
+
+User->>Device: Login Request
+Device->>Entra: Authentication Request
+
+Entra->>CA: Evaluate Policy
+
+CA->>MFA: Require MFA
+MFA->>User: Push/OTP Verification
+User->>MFA: Approves MFA
+
+MFA->>Entra: Authentication Success
+
+Note over Entra,PIM: Privileged Access Flow
+
+User->>PIM: Request Role Activation
+PIM->>MFA: Step-Up Authentication
+PIM->>Entra: Issue Privileged Token
+
+Entra->>Resource: Access Token Issued
+Resource->>User: Authorized Access
