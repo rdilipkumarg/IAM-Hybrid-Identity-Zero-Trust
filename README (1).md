@@ -1,7 +1,12 @@
 
-# Project Title
+# Scaling Secure Access: Implementing Phish-Resistant MFA & Conditional Access Pipelines
 
-Scaling Secure Access: Implementing Phish-Resistant MFA & Conditional Access Pipelines
+Unified hybrid identity infrastructure: integrated on-premises Active Directory with Azure AD (via AD Connect), enabling seamless SSO for legacy and cloud apps and centralizing access control.
+
+Enforced least privilege for admins: deployed Azure AD Privileged Identity Management (PIM) for all high-privilege roles, eliminating permanent admin accounts and enforcing just-in-time elevation with full audit logging.
+
+Secured external access: enabled Azure AD B2B collaboration for partners/contractors and implemented Conditional Access policies (MFA, network location, device compliance), enforcing zero-trust controls across the hybrid environment.
+
 # IAM-Hybrid-Identity-Zero-Trust
 This project demonstrates the design and implementation of a hybrid Identity and Access Management (IAM) architecture integrating on-premises Active Directory with Azure Active Directory (Microsoft Entra ID).
 
